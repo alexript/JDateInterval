@@ -23,7 +23,7 @@
  */
 package net.napilnik.jdateinterval.validators;
 
-import net.napilnik.jdateinterval.model.DefaultDateIntervalModel;
+import net.napilnik.jdateinterval.model.DateIntervalModel;
 
 /**
  *
@@ -31,5 +31,5 @@ import net.napilnik.jdateinterval.model.DefaultDateIntervalModel;
  */
 public interface DateValidator {
 
-    ValidationResultSet validate(DefaultDateIntervalModel interval);
+    ValidationResultSet validate(DateIntervalModel interval);
 }

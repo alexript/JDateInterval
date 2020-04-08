@@ -24,7 +24,7 @@
 package net.napilnik.jdateinterval.validators;
 
 import java.util.Date;
-import net.napilnik.jdateinterval.model.DefaultDateIntervalModel;
+import net.napilnik.jdateinterval.model.DateIntervalModel;
 
 /**
  *
@@ -33,7 +33,7 @@ import net.napilnik.jdateinterval.model.DefaultDateIntervalModel;
 public class DatesOrderValidator implements DateValidator {
 
     @Override
-    public ValidationResultSet validate(DefaultDateIntervalModel interval) {
+    public ValidationResultSet validate(DateIntervalModel interval) {
         ValidationResultSet results = new ValidationResultSet();
         Date startDate = interval.getStartDate();
         Date endDate = interval.getEndDate();
