@@ -73,6 +73,12 @@ public class LimitedDateIntervalModel extends DefaultDateIntervalModel {
     }
 
     @Override
+    public void reset() {
+        super.reset();
+        limit.reset();
+    }
+
+    @Override
     public void setStartDate(Date startDate) {
         if (limit != null) {
             Date lowLimit = limit.getStartDate();
