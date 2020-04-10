@@ -52,6 +52,12 @@ public class DefaultDateIntervalModel implements Serializable, DateIntervalModel
     }
 
     @Override
+    public void reset() {
+        setStartDate(null);
+        setEndDate(null);
+    }
+
+    @Override
     public void setStartDate(Date startDate) {
         Date oldDate = this.startDate == null ? null : new Date(this.startDate.getTime());
         this.startDate = startDate;

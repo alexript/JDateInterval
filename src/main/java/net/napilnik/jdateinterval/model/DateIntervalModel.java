@@ -32,6 +32,8 @@ import net.napilnik.jdateinterval.event.IntervalChangedListener;
  */
 public interface DateIntervalModel {
 
+    void reset();
+
     Date getEndDate();
 
     Date getStartDate();

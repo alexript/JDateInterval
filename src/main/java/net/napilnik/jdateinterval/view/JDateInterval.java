@@ -65,10 +65,18 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
         jLabel2 = new javax.swing.JLabel();
         startDate = new org.jdesktop.swingx.JXDatePicker();
         endDate = new org.jdesktop.swingx.JXDatePicker();
+        resetButton = new javax.swing.JButton();
 
         jLabel1.setText("StartDate");
 
         jLabel2.setText("EndDate");
+
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -83,6 +91,8 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resetButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,10 +103,15 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(resetButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        getModel().reset();
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     public final void setModel(DateIntervalModel model) {
         this.model = model;
@@ -112,6 +127,7 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
     private org.jdesktop.swingx.JXDatePicker endDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton resetButton;
     private org.jdesktop.swingx.JXDatePicker startDate;
     // End of variables declaration//GEN-END:variables
 

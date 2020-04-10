@@ -33,6 +33,14 @@ public class SafeDateIntervalModel extends DefaultDateIntervalModel {
 
     public SafeDateIntervalModel() {
         super();
+        reset();
+    }
+
+    @Override
+    public void reset() {
+        Date now = new Date();
+        setStartDate(new Date(now.getTime()));
+        setEndDate(new Date(now.getTime()));
     }
 
     @Override
@@ -51,7 +59,7 @@ public class SafeDateIntervalModel extends DefaultDateIntervalModel {
     public void setEndDate(Date endDate) {
         super.setEndDate(endDate);
         Date sDate = getStartDate();
-        
+
         if (sDate != null && endDate != null) {
             if (sDate.after(endDate)) {
                 super.setStartDate(endDate);
@@ -59,5 +67,4 @@ public class SafeDateIntervalModel extends DefaultDateIntervalModel {
         }
     }
 
-    
 }
