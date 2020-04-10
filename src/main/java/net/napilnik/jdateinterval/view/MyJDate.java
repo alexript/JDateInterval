@@ -27,7 +27,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JLabel;
@@ -38,7 +37,7 @@ import org.jdesktop.swingx.JXDatePicker;
  *
  * @author alexr
  */
-class MyJDate extends JXDatePicker {
+public class MyJDate extends JXDatePicker {
 
     private static final SimpleDateFormat TODAY_PATTERN = new SimpleDateFormat("dd.MM.yyyy");
     private final JLabel jb;
