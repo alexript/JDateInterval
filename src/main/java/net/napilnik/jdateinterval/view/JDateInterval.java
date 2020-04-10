@@ -25,6 +25,9 @@ package net.napilnik.jdateinterval.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 import net.napilnik.jdateinterval.event.IntervalChangedListener;
 import net.napilnik.jdateinterval.event.IntervalEvent;
 import net.napilnik.jdateinterval.model.DateIntervalModel;
@@ -63,9 +66,9 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        startDate = new org.jdesktop.swingx.JXDatePicker();
-        endDate = new org.jdesktop.swingx.JXDatePicker();
         resetButton = new javax.swing.JButton();
+        startDate = new net.napilnik.jdateinterval.view.MyJDate();
+        endDate = new net.napilnik.jdateinterval.view.MyJDate();
 
         jLabel1.setText("StartDate");
 
@@ -102,9 +105,9 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
+                    .addComponent(resetButton)
                     .addComponent(startDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(resetButton))
+                    .addComponent(endDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -124,24 +127,33 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdesktop.swingx.JXDatePicker endDate;
+    private net.napilnik.jdateinterval.view.MyJDate endDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton resetButton;
-    private org.jdesktop.swingx.JXDatePicker startDate;
+    private net.napilnik.jdateinterval.view.MyJDate startDate;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void startDateChanged(IntervalEvent event) {
-        startDate.setDate(event.getNewValue());
+        final Date value = event.getNewValue();
+        startDate.setDate(value);
     }
 
     @Override
     public void endDateChanged(IntervalEvent event) {
-        endDate.setDate(event.getNewValue());
+        final Date value = event.getNewValue();
+        endDate.setDate(value);
+    }
+
+    public void setToolTipText(String startDateText, String endDateText) {
+        startDate.setToolTipText(startDateText);
+        endDate.setToolTipText(endDateText);
     }
 
     private void initView() {
+        getModel().reset();
+
         startDate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -151,6 +163,7 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
                 }
             }
         });
+        
         endDate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,6 +171,22 @@ public class JDateInterval extends javax.swing.JPanel implements IntervalChanged
                 if (source instanceof JXDatePicker) {
                     model.setEndDate(((JXDatePicker) source).getDate());
                 }
+            }
+        });
+
+        startDate.addTodayClickListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                model.setStartDate(new Date());
+                startDate.grabFocus();
+            }
+        });
+
+        endDate.addTodayClickListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                model.setEndDate(new Date());
+                endDate.grabFocus();
             }
         });
     }
