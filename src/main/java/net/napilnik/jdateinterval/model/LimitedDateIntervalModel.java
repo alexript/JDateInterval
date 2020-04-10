@@ -33,13 +33,13 @@ import net.napilnik.jdateinterval.validators.ValidationResultSet;
  */
 public class LimitedDateIntervalModel extends DefaultDateIntervalModel {
 
-    private DefaultDateIntervalModel limit;
+    private DateIntervalModel limit;
 
     public LimitedDateIntervalModel() {
         this(null);
     }
 
-    public LimitedDateIntervalModel(DefaultDateIntervalModel limit) {
+    public LimitedDateIntervalModel(DateIntervalModel limit) {
         super();
         setLimit(limit);
     }
@@ -49,16 +49,26 @@ public class LimitedDateIntervalModel extends DefaultDateIntervalModel {
 
     }
 
-    public LimitedDateIntervalModel(Date startDate, Date endDate, DefaultDateIntervalModel limit) {
+    public LimitedDateIntervalModel(Date startDate, Date endDate, DateIntervalModel limit) {
         super(startDate, endDate);
         setLimit(limit);
     }
 
-    public void setLimit(DefaultDateIntervalModel limit) {
+    public LimitedDateIntervalModel(DateIntervalModel other, DateIntervalModel limit) {
+        super(other);
+        setLimit(limit);
+    }
+    
+    public LimitedDateIntervalModel(LimitedDateIntervalModel other) {
+        super(other);
+        setLimit(other.getLimit());
+    }
+
+    public void setLimit(DateIntervalModel limit) {
         this.limit = limit;
     }
 
-    public DefaultDateIntervalModel getLimit() {
+    public DateIntervalModel getLimit() {
         return limit;
     }
 
