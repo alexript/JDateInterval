@@ -30,7 +30,7 @@ import java.util.Random;
 import net.napilnik.jdateinterval.event.IntervalChangedListener;
 import net.napilnik.jdateinterval.event.IntervalEvent;
 import net.napilnik.jdateinterval.model.DateIntervalModel;
-import net.napilnik.jdateinterval.view.JDateInterval;
+import net.napilnik.jdateinterval.model.SafeDateIntervalModel;
 
 /**
  *
@@ -38,10 +38,13 @@ import net.napilnik.jdateinterval.view.JDateInterval;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private final DateIntervalModel dateIntervalModel;
+
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
+        dateIntervalModel = new SafeDateIntervalModel();
         initComponents();
         initView();
     }
@@ -55,7 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateInterval1 = new net.napilnik.jdateinterval.view.JDateInterval();
+        jDateInterval1 = new net.napilnik.jdateinterval.view.JDateInterval(dateIntervalModel);
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -121,7 +124,7 @@ public class MainFrame extends javax.swing.JFrame {
         DateIntervalModel model = jDateInterval1.getModel();
 
         Date now = new Date();
-        
+
         Random r = new SecureRandom();
         long startTime = r.nextInt((int) now.getTime());
         long endTime = r.nextInt((int) now.getTime());

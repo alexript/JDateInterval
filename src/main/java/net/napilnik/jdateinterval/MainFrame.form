@@ -53,6 +53,9 @@
   </Layout>
   <SubComponents>
     <Component class="net.napilnik.jdateinterval.view.JDateInterval" name="jDateInterval1">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new net.napilnik.jdateinterval.view.JDateInterval(dateIntervalModel)"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
